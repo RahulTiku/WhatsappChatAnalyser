@@ -41,7 +41,8 @@ def bar_plot(df):
     return x, x_per
 
 def most_words_used(selected_user, df):
-    
+    if selected_user != "Overall":
+        df = df[df["user"] == selected_user]
     f = open("stop_hinglish.txt", "r")
     stop_words = f.read()
     
@@ -67,6 +68,8 @@ def most_words_used(selected_user, df):
     return temp_data, word_cloud
 
 def mon_year_msg(selected_user, df):
+    if selected_user != "Overall":
+        df = df[df["user"] == selected_user]
     df["month_num"] = df["date"].dt.month
     timeline = df.groupby(["year", "month_num", "month"]).count()["message"].reset_index()
     mon_year = []
@@ -76,6 +79,8 @@ def mon_year_msg(selected_user, df):
     return mon_year,timeline
 
 def heat_map(selected_user, df):
+    if selected_user != "Overall":
+        df = df[df["user"] == selected_user]
     df["day_name"] = df["date"].dt.day_name()
     period = []
     for hour in df["hour"]:
@@ -92,6 +97,8 @@ def heat_map(selected_user, df):
     return pivot_table
 
 def activity_chart(selected_user,df):
+    if selected_user != "Overall":
+        df = df[df["user"] == selected_user]
     df["day_name"] = df["date"].dt.day_name()
     msg_day = df.groupby("day_name").count()["message"].reset_index()
     msg_month = df.groupby("month").count()["message"].reset_index()
