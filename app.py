@@ -78,49 +78,49 @@ if uploaded_file is not None:
             
            
               
-          temp_data, word_cloud = Functions.most_words_used(selected_user, df)
-          st.title("Word Cloud")
-          fig, ax =plt.subplots()
-          ax.imshow(word_cloud)
-          st.pyplot(fig)
+        temp_data, word_cloud = Functions.most_words_used(selected_user, df)
+        st.title("Word Cloud")
+        fig, ax =plt.subplots()
+        ax.imshow(word_cloud)
+        st.pyplot(fig)
             
-          st.title("Most used top 20 words")
-          fig,ax = plt.subplots()
-          ax.barh(temp_data[0], temp_data[1])
-          plt.xticks(rotation = "vertical")
-          st.pyplot(fig)
+        st.title("Most used top 20 words")
+        fig,ax = plt.subplots()
+        ax.barh(temp_data[0], temp_data[1])
+        plt.xticks(rotation = "vertical")
+        st.pyplot(fig)
             
-          mon_year,timeline = Functions.mon_year_msg(selected_user, df)
-          st.title("Monthly Timeline")
-          fig, ax =plt.subplots()
-          ax.plot(mon_year, timeline["message"])
-          plt.xticks(rotation = "vertical")
-          st.pyplot(fig)
+        mon_year,timeline = Functions.mon_year_msg(selected_user, df)
+        st.title("Monthly Timeline")
+        fig, ax =plt.subplots()
+        ax.plot(mon_year, timeline["message"])
+        plt.xticks(rotation = "vertical")
+        st.pyplot(fig)
             
-          msg_day, msg_month = Functions.activity_chart(selected_user, df)
-          st.title("Activity Graph")
-          col1, col2 = st.columns(2)
+        msg_day, msg_month = Functions.activity_chart(selected_user, df)
+        st.title("Activity Graph")
+        col1, col2 = st.columns(2)
             
-          with col1:
-              st.header("Most busy day")
-              fig, ax =plt.subplots()
-              ax.bar(msg_day["day_name"], msg_day["message"], color="green")
-              plt.xticks(rotation="vertical")
-              st.pyplot(fig)
-          with col2:
-              st.header("Most busy month")
-              fig, ax =plt.subplots()
-              ax.bar(msg_month["month"], msg_month["message"], color="yellow")
-              plt.xticks(rotation="vertical")
-              st.pyplot(fig)
+        with col1:
+            st.header("Most busy day")
+            fig, ax =plt.subplots()
+            ax.bar(msg_day["day_name"], msg_day["message"], color="green")
+            plt.xticks(rotation="vertical")
+            st.pyplot(fig)
+        with col2:
+            st.header("Most busy month")
+            fig, ax =plt.subplots()
+            ax.bar(msg_month["month"], msg_month["message"], color="yellow")
+            plt.xticks(rotation="vertical")
+            st.pyplot(fig)
             
-          import seaborn as sns
-          pivot_table = Functions.heat_map(selected_user, df)
-          st.title("Hour-wise weekly activity map")
-          plt.figure(figsize = (16,8))
-          fig, ax = plt.subplots()
-          ax =sns.heatmap(pivot_table)
-          st.pyplot(fig)
+        import seaborn as sns
+        pivot_table = Functions.heat_map(selected_user, df)
+        st.title("Hour-wise weekly activity map")
+        plt.figure(figsize = (16,8))
+        fig, ax = plt.subplots()
+        ax =sns.heatmap(pivot_table)
+        st.pyplot(fig)
             
            
             
