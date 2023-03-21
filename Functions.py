@@ -42,7 +42,7 @@ def bar_plot(df):
 
 def most_words_used(selected_user, df):
     
-    f = open("C:/Users/Rahul/Whatsapp-app-analyser/stop_hinglish.txt", "r")
+    f = open("stop_hinglish.txt", "r")
     stop_words = f.read()
     
     temp = df[df["message"] != "<Media omitted>\n"]
