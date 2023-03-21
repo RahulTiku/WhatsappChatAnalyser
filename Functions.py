@@ -48,6 +48,7 @@ def most_words_used(selected_user, df):
     
     temp = df[df["message"] != "<Media omitted>\n"]
     temp = temp[temp["message"] != "This message was deleted\n"]
+    temp = temp[temp["message"] != "You deleted this message\n"]
     temp = temp[temp["user"] != "Whatsapp notification"]
     
            
